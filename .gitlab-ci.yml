@@ -1,0 +1,22 @@
+image: jdrouet/docker-with-buildx:stable
+
+variables:
+  DOCKER_HOST: tcp://docker:2375/
+  DOCKER_DRIVER: overlay2
+
+services:
+  - docker:dind
+
+build:
+  stage: build
+  script:
+    - docker buildx create --use
+    - docker-buildx version
+    - docker info
+    - docker login -u $DOCKER_USER -p eZ^IxEeFE#$DOCKER_PWD
+    - docker-buildx build
+      --platform linux/amd64,linux/arm64/v8
+      -t $DOCKER_USER/buildxtest:latest
+      -f ./Dockerfile
+      --push
+      .
