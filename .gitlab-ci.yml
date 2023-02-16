@@ -14,6 +14,7 @@ build:
   script:
     - wget -O /usr/bin/docker-buildx
       https://github.com/docker/buildx/releases/download/${BUILDX_VERSION}/buildx-${BUILDX_VERSION}.${BUILDX_ARCH}
+    - chmod +x /usr/bin/docker-buildx
     - docker-buildx create --use
     - docker-buildx version
     - docker info
