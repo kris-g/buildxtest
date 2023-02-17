@@ -3,7 +3,7 @@ image: docker:stable
 variables:
   DOCKER_HOST: tcp://docker:2375/
   DOCKER_DRIVER: overlay2
-  BUILDX_VERSION: v0.10.3
+  BUILDX_VERSION: v0.9.1
   BUILDX_ARCH: linux-amd64
 
 services:
